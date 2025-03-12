@@ -1,0 +1,6 @@
+Media/LoadingScreen/DMC_Shop.png
+Media/LoadingScreen/Red_Orb.png
+Media/LoadingScreen/Green_Orb.png
+Media/LoadingScreen/Blue_Orb.png
+Media/LoadingScreen/Gold_Orb.png
+Media/LoadingScreen/Purple_Orb.png
