@@ -5,17 +5,19 @@
 #include "../../System/Managers/SoundManager.h"
 #include "../../System/Interfaces/IExecutableEvent.h"
 #include "../../System/StreamAssetLoader.h"
+#include "../../System//Threading/MySemaphore.h"
 #include "Icon.h"
 namespace entities
 {
 	using namespace managers;
 	using namespace interfaces;
+	using namespace threading;
 	
 	class TexDisplay:public GameObject,public IExecutableEvent
 	{
 	private:
 		std::vector<Icon*> iconList;
-
+		MySemaphore* mutex;
 		enum StreamingType { BATCH_LOAD = 0, SINGLE_STREAM = 1 };
 		const float STREAMING_LOAD_DELAY = 1.f;
 		const StreamingType streamingType = SINGLE_STREAM;

@@ -41,7 +41,6 @@ void threading::ThreadPool::scheduleTask(IWorkerAction *action)
 
 void threading::ThreadPool::run()
 {
-	std::cout << this->running << std::endl;
 	while (this->running)
 	{
 		if (!this->pendingActions.empty())
@@ -61,8 +60,6 @@ void threading::ThreadPool::run()
 				workerThread->start();
 				this->pendingActions.pop();
 		
-				//std::cout << this->inactiveThreads.size() << std::endl;
-				//this->onFinished(workerThread->getThreadID());
 				
 			}
 		}

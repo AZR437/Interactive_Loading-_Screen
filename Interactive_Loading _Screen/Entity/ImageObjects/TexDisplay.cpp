@@ -3,6 +3,7 @@
 using namespace entities;
 TexDisplay::TexDisplay(std::string name):GameObject(name)
 {
+	this->mutex = new MySemaphore(1);
 }
 
 void TexDisplay::initialize()
@@ -56,7 +57,7 @@ void TexDisplay::onFinishedExecution()
 }
 void entities::TexDisplay::spawnObject()
 {
-
+	this->mutex->aquire();
 	std::string objectName = TextureManager::getInstance()->getNameFromList(this->iconList.size()+6);
 	Icon* icon = new Icon(objectName, this->iconList.size());
 	this->iconList.push_back(icon);
@@ -83,6 +84,7 @@ void entities::TexDisplay::spawnObject()
 	
 	GameObjectManager::getInstance()->addObject(icon);
 	this->numFinished++;
+	this->mutex->release();
 
 }
 void TexDisplay::arrangeCast()
