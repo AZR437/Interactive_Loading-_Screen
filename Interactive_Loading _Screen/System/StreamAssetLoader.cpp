@@ -22,10 +22,8 @@ std::string loader::StreamAssetLoader::getName()
 
 void loader::StreamAssetLoader::onStartTask()
 {
-	std::random_device seeder;
-	std::mt19937 engine(seeder());
-	std::uniform_int_distribution<int> dist(1000, 5000);
-	IETThread::sleep(dist(engine));
+
+	IETThread::sleep(10000);
 
 	this->semaphore->aquire();
 	std::vector<String> tokens = StringUtils::split(path, '/');
